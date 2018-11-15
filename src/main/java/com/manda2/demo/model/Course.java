@@ -1,7 +1,14 @@
 package com.manda2.demo.model;
 
-public class Course {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class Course {
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
   private String nameDK;
   private String nameENG;
@@ -18,9 +25,6 @@ public class Course {
   private String learningActivitys;
   private String examForm;
   private String teachers;
-
-
-
 
 
 }
