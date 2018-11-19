@@ -13,7 +13,6 @@ import javax.persistence.InheritanceType;
 public class Person {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "person_id")
   private long id;
   private String name;
   private String email;

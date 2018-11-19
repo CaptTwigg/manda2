@@ -34,9 +34,31 @@ public class Course implements Serializable {
   private String content;
   private String learningActivitys;
   private String examForm;
-  @OneToMany
+  @ManyToMany
   @JoinColumn(name = "id")
   private List<Teacher> teachers;
+
+
+  public Course() {
+  }
+
+  public Course(String nameDK, String nameENG, String programName, boolean meet, int ECTS, String language, int minNumOfStudent, int expNumOfStudent, int maxNumOfStudent, String prerequisites, String learningOutcome, String content, String learningActivitys, String examForm, List<Teacher> teachers) {
+    this.nameDK = nameDK;
+    this.nameENG = nameENG;
+    this.programName = programName;
+    this.meet = meet;
+    this.ECTS = ECTS;
+    this.language = language;
+    this.minNumOfStudent = minNumOfStudent;
+    this.expNumOfStudent = expNumOfStudent;
+    this.maxNumOfStudent = maxNumOfStudent;
+    this.prerequisites = prerequisites;
+    this.learningOutcome = learningOutcome;
+    this.content = content;
+    this.learningActivitys = learningActivitys;
+    this.examForm = examForm;
+    this.teachers = teachers;
+  }
 
   public Long getId() {
     return id;
