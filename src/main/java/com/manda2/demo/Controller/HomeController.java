@@ -4,6 +4,8 @@ import com.manda2.demo.model.Course;
 import com.manda2.demo.model.CourseRepo;
 import com.manda2.demo.model.Student;
 import com.manda2.demo.model.StudentRepo;
+import com.manda2.demo.model.StudieProgram;
+import com.manda2.demo.model.StudieProgramRepo;
 import com.manda2.demo.model.Teacher;
 import com.manda2.demo.model.TeacherRepo;
 
@@ -27,18 +29,32 @@ public class HomeController {
   @Autowired
   private CourseRepo courseRepo;
 
+  @Autowired
+  private StudieProgramRepo studieProgramRepo;
+
   @GetMapping("")
   public String home() {
 
     Teacher teacher = new Teacher("teacher1","mail",1,"teacher");
     Teacher teacher2 = new Teacher("teacher2","mail",1,"teacher");
+
+    ArrayList<StudieProgram> studiePrograms = new ArrayList<>(Arrays.asList(
+      new StudieProgram("Computer Science "),
+      new StudieProgram("Web Development"),
+      new StudieProgram("Software development "),
+      new StudieProgram("IT-Security")));
+
+    studieProgramRepo.save(studiePrograms.get(0));
+    studieProgramRepo.save(studiePrograms.get(1));
+    studieProgramRepo.save(studiePrograms.get(2));
+    studieProgramRepo.save(studiePrograms.get(3));
     teacherRepo.save(teacher);
     teacherRepo.save(teacher2);
 
 
     Course course = new Course("Fysik",
       "physics",
-      "Fysik",
+      (List<StudieProgram>) studieProgramRepo.findAll(),
       true,
       120,
       "Dansk",

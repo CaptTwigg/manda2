@@ -1,19 +1,16 @@
 package com.manda2.demo.model;
 
+import org.springframework.jmx.export.annotation.ManagedMetric;
+
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Course implements Serializable {
@@ -22,10 +19,11 @@ public class Course implements Serializable {
   private Long id;
   private String nameDK;
   private String nameENG;
-  private String programName;
-  private boolean meet;
+  @ManyToMany
+  private List<StudieProgram> studiePrograms;
+  private boolean mandatoryOrElective;
   private int ECTS;
-  private String language;
+  private String courseLanguage;
   private int minNumOfStudent;
   private int expNumOfStudent;
   private int maxNumOfStudent;
@@ -42,13 +40,13 @@ public class Course implements Serializable {
   public Course() {
   }
 
-  public Course(String nameDK, String nameENG, String programName, boolean meet, int ECTS, String language, int minNumOfStudent, int expNumOfStudent, int maxNumOfStudent, String prerequisites, String learningOutcome, String content, String learningActivitys, String examForm, List<Teacher> teachers) {
+  public Course(String nameDK, String nameENG, List<StudieProgram> studiePrograms, boolean mandatoryOrElective, int ECTS, String courseLanguage, int minNumOfStudent, int expNumOfStudent, int maxNumOfStudent, String prerequisites, String learningOutcome, String content, String learningActivitys, String examForm, List<Teacher> teachers) {
     this.nameDK = nameDK;
     this.nameENG = nameENG;
-    this.programName = programName;
-    this.meet = meet;
+    this.studiePrograms = studiePrograms;
+    this.mandatoryOrElective = mandatoryOrElective;
     this.ECTS = ECTS;
-    this.language = language;
+    this.courseLanguage = courseLanguage;
     this.minNumOfStudent = minNumOfStudent;
     this.expNumOfStudent = expNumOfStudent;
     this.maxNumOfStudent = maxNumOfStudent;
@@ -84,20 +82,20 @@ public class Course implements Serializable {
     this.nameENG = nameENG;
   }
 
-  public String getProgramName() {
-    return programName;
+  public List<StudieProgram> getStudiePrograms() {
+    return studiePrograms;
   }
 
-  public void setProgramName(String programName) {
-    this.programName = programName;
+  public void setStudiePrograms(List<StudieProgram> studiePrograms) {
+    this.studiePrograms = studiePrograms;
   }
 
-  public boolean isMeet() {
-    return meet;
+  public boolean isMandatoryOrElective() {
+    return mandatoryOrElective;
   }
 
-  public void setMeet(boolean meet) {
-    this.meet = meet;
+  public void setMandatoryOrElective(boolean mandatoryOrElective) {
+    this.mandatoryOrElective = mandatoryOrElective;
   }
 
   public int getECTS() {
@@ -108,12 +106,12 @@ public class Course implements Serializable {
     this.ECTS = ECTS;
   }
 
-  public String getLanguage() {
-    return language;
+  public String getCourseLanguage() {
+    return courseLanguage;
   }
 
-  public void setLanguage(String language) {
-    this.language = language;
+  public void setCourseLanguage(String courseLanguage) {
+    this.courseLanguage = courseLanguage;
   }
 
   public int getMinNumOfStudent() {
@@ -190,7 +188,7 @@ public class Course implements Serializable {
 
   @Override
   public String toString() {
-    return String.format("id: %s nameDK: %s nameENG: %s programName: %s meet: %s ECTS: %s language: %s minNumOfStudent: %s expNumOfStudent: %s maxNumOfStudent: %s prerequisites: %s learningOutcome: %s content: %s learningActivitys: %s examForm: %s teachers: %s "
-      , this.id, this.nameDK, this.nameENG, this.programName, this.meet, this.ECTS, this.language, this.minNumOfStudent, this.expNumOfStudent, this.maxNumOfStudent, this.prerequisites, this.learningOutcome, this.content, this.learningActivitys, this.examForm, this.teachers);
+    return String.format("id: %s nameDK: %s nameENG: %s studiePrograms: %s mandatoryOrElective: %s ECTS: %s courseLanguage: %s minNumOfStudent: %s expNumOfStudent: %s maxNumOfStudent: %s prerequisites: %s learningOutcome: %s content: %s learningActivitys: %s examForm: %s teachers: %s "
+      , this.id, this.nameDK, this.nameENG, this.studiePrograms, this.mandatoryOrElective, this.ECTS, this.courseLanguage, this.minNumOfStudent, this.expNumOfStudent, this.maxNumOfStudent, this.prerequisites, this.learningOutcome, this.content, this.learningActivitys, this.examForm, this.teachers);
   }
 }
