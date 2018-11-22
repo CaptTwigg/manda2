@@ -19,6 +19,8 @@ public class Course implements Serializable {
   private Long id;
   private String nameDK;
   private String nameENG;
+  private int semester;
+  private String classCode;
   @ManyToMany
   private List<StudieProgram> studiePrograms;
   private boolean mandatoryOrElective;
@@ -40,9 +42,11 @@ public class Course implements Serializable {
   public Course() {
   }
 
-  public Course(String nameDK, String nameENG, List<StudieProgram> studiePrograms, boolean mandatoryOrElective, int ECTS, String courseLanguage, int minNumOfStudent, int expNumOfStudent, int maxNumOfStudent, String prerequisites, String learningOutcome, String content, String learningActivitys, String examForm, List<Teacher> teachers) {
+  public Course(String nameDK, String nameENG, int semester, String classCode, List<StudieProgram> studiePrograms, boolean mandatoryOrElective, int ECTS, String courseLanguage, int minNumOfStudent, int expNumOfStudent, int maxNumOfStudent, String prerequisites, String learningOutcome, String content, String learningActivitys, String examForm, List<Teacher> teachers) {
     this.nameDK = nameDK;
     this.nameENG = nameENG;
+    this.semester = semester;
+    this.classCode = classCode;
     this.studiePrograms = studiePrograms;
     this.mandatoryOrElective = mandatoryOrElective;
     this.ECTS = ECTS;
@@ -186,9 +190,25 @@ public class Course implements Serializable {
     this.teachers = teachers;
   }
 
+  public int getSemester() {
+    return semester;
+  }
+
+  public void setSemester(int semester) {
+    this.semester = semester;
+  }
+
+  public String getClassCode() {
+    return classCode;
+  }
+
+  public void setClassCode(String classCode) {
+    this.classCode = classCode;
+  }
+
   @Override
   public String toString() {
-    return String.format("id: %s nameDK: %s nameENG: %s studiePrograms: %s mandatoryOrElective: %s ECTS: %s courseLanguage: %s minNumOfStudent: %s expNumOfStudent: %s maxNumOfStudent: %s prerequisites: %s learningOutcome: %s content: %s learningActivitys: %s examForm: %s teachers: %s "
-      , this.id, this.nameDK, this.nameENG, this.studiePrograms, this.mandatoryOrElective, this.ECTS, this.courseLanguage, this.minNumOfStudent, this.expNumOfStudent, this.maxNumOfStudent, this.prerequisites, this.learningOutcome, this.content, this.learningActivitys, this.examForm, this.teachers);
+    return String.format("id: %s nameDK: %s nameENG: %s semester: %s classCode: %s studiePrograms: %s mandatoryOrElective: %s ECTS: %s courseLanguage: %s minNumOfStudent: %s expNumOfStudent: %s maxNumOfStudent: %s prerequisites: %s learningOutcome: %s content: %s learningActivitys: %s examForm: %s teachers: %s "
+      , this.id, this.nameDK, this.nameENG, this.semester, this.classCode, this.studiePrograms, this.mandatoryOrElective, this.ECTS, this.courseLanguage, this.minNumOfStudent, this.expNumOfStudent, this.maxNumOfStudent, this.prerequisites, this.learningOutcome, this.content, this.learningActivitys, this.examForm, this.teachers);
   }
 }

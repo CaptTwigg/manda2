@@ -1,0 +1,23 @@
+/*
+Create new couse style
+*/
+.createForm{
+    max-width: 500px;
+    margin: auto;
+}
+
+.createForm div{
+    padding: 10px;
+}
+
+.createForm input, select{
+    float: right;
+}
+
+.teacherSelect{
+    height: 108px;
+}
+
+.createCoursebtn{
+    float: right;
+}

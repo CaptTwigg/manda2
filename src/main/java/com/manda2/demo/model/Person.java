@@ -1,5 +1,8 @@
 package com.manda2.demo.model;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -14,19 +19,27 @@ public class Person {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
+  @Column(name = "verynicename")
   private String name;
   private String email;
+  private String password;
   private int niveau;
-  private String position;
+
 
   public Person() {
   }
 
-  public Person(String name, String email, int niveau, String position) {
+  public Person(String name, String email, String password, int niveau) {
     this.name = name;
     this.email = email;
+    this.password = new BCryptPasswordEncoder().encode(password);
     this.niveau = niveau;
-    this.position = position;
+  }
+
+  @Override
+  public String toString() {
+    return String.format("id: %s name: %s email: %s password: %s niveau: %s "
+      , this.id, this.name, this.email, this.password, this.niveau);
   }
 
   public long getId() {
@@ -49,8 +62,12 @@ public class Person {
     return email;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
   }
 
   public int getNiveau() {
@@ -61,17 +78,8 @@ public class Person {
     this.niveau = niveau;
   }
 
-  public String getPosition() {
-    return position;
+  public void setEmail(String email) {
+    this.email = email;
   }
 
-  public void setPosition(String position) {
-    this.position = position;
-  }
-
-  @Override
-  public String toString() {
-    return String.format("id: %s name: %s email: %s niveau: %s position: %s "
-      , this.id, this.name, this.email, this.niveau, this.position);
-  }
 }

@@ -4,14 +4,9 @@ package com.manda2.demo.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Student extends Person {
@@ -23,8 +18,8 @@ public class Student extends Person {
   public Student() {
   }
 
-  public Student(String name, String email, int niveau, String position, ArrayList<Course> courses) {
-    super(name, email, niveau, position);
+  public Student(String name, String email, String password, int niveau, List<Course> courses) {
+    super(name, email, password, niveau);
     this.courses = courses;
   }
 

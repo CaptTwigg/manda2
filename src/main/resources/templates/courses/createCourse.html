@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Nyt Kursus</title>
+
+    <link type="text/css" rel="stylesheet" href="../stylesheet.css"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <form id="createFormID" class="createForm" action="/api/createCourse" method="post">
+            <div>
+                <label for="nameDK">Kursusnavn Dansk</label>
+                <input th:field="${course.nameDK}" placeholder="Kursusnavn Dansk..."/>
+            </div>
+            <div>
+                <label for="nameENG">Kursusnavn Engelsk</label>
+                <input th:field="${course.nameENG}"  placeholder="Kursusnavn Engelsk..."/>
+            </div>
+            <div>
+                <label for="semester">Semester</label>
+                <input th:field="${course.semester}"  placeholder="Semester..."/>
+            </div>
+            <div>
+                <label for="classCode">Klassekode</label>
+                <input th:field="${course.classCode}"  placeholder="Klassekode..."/>
+            </div>
+            <div class="teacherSelect">
+                <label for="studiePrograms">Studieprogram</label>
+                <select th:field="${course.studiePrograms}"   multiple="multiple">
+                    <option
+                            th:each="studieProgram : ${studiePrograms}"
+                            th:value="${studieProgram.id}"
+                            th:text="${studieProgram.program}"
+                    ></option>
+                </select>
+            </div>
+            <div>
+                <label for="mandatoryOrElective">Obligatorisk eller valgfrit</label>
+                <select th:field="${course.mandatoryOrElective}" >
+                    <option value="false">Obligatorisk</option>
+                    <option value="true">Valgfrit</option>
+                </select>
+            </div>
+            <div>
+                <label for="ECTS">ECTS</label>
+                <input th:field="${course.ECTS}"  placeholder="ECTS..."/>
+            </div>
+            <div>
+                <label for="courseLanguage">Sprog</label>
+                <input th:field="${course.courseLanguage}"  placeholder="Sprog..."/>
+            </div>
+            <div>
+                <label for="minNumOfStudent">Mindste antal studerende</label>
+                <input th:field="${course.minNumOfStudent}"  placeholder="Mindste antal studerende..."/>
+            </div>
+            <div>
+                <label for="expNumOfStudent">Forventet antal studerende</label>
+                <input th:field="${course.expNumOfStudent}"  placeholder="Forventet antal studerende..."/>
+            </div>
+            <div>
+                <label for="maxNumOfStudent">Højeste antal studerende</label>
+                <input th:field="${course.maxNumOfStudent}"  placeholder="Højeste antal studerende..."/>
+            </div>
+            <div>
+                <label for="prerequisites">Forudsætninger</label>
+                <input th:field="${course.prerequisites}"  placeholder="Forudsætninger..."/>
+            </div>
+            <div>
+                <label for="learningOutcome">Læringsudbytte</label>
+                <input th:field="${course.learningOutcome}" placeholder="Læringsudbytte..."/>
+            </div>
+            <div>
+                <label for="content">Kursus indhold</label>
+                <input th:field="${course.content}"  placeholder="Indhold..."/>
+            </div>
+            <div>
+                <label for="learningActivitys">Læringsaktiviteter</label>
+                <input th:field="${course.learningActivitys}"  placeholder="Læringsaktiviteter..."/>
+            </div>
+            <div>
+                <label for="examForm">Eksamensform</label>
+                <input th:field="${course.examForm}"  placeholder="Eksamensform..."/>
+            </div>
+            <div class="teacherSelect">
+                <label for="teachers">Vælg Underviser(e)</label>
+                <select th:field="${course.teachers}"  multiple="multiple">
+                    <option
+                            th:each="teacher : ${teachers}"
+                            th:value="${teacher.id}"
+                            th:text="${teacher.name}"
+                    ></option>
+                </select>
+            </div>
+            <div>
+                <button type="button" class="btn btn-danger backbtn">Tilbage</button>
+                <button id="createCourseBtnID" type="button" class="btn btn-success createCoursebtn">Opret Kursus</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+    $("#createCourseBtnID").click(function () {
+      $.ajax({
+        method: "post",
+        url: "/api/createCourse",
+        data: $("#createFormID").serialize(),
+        success: function (resp) {
+          console.log(resp);
+          window.location.href = "/";
+
+        }
+      });
+    });
+</script>
+</body>
+</html>
