@@ -1,11 +1,14 @@
 package com.manda2.demo.Controller;
 
 import com.manda2.demo.model.Course;
-import com.manda2.demo.model.CourseRepo;
-import com.manda2.demo.model.PersonRepo;
-import com.manda2.demo.model.StudentRepo;
-import com.manda2.demo.model.StudieProgramRepo;
-import com.manda2.demo.model.TeacherRepo;
+import com.manda2.demo.model.Student;
+import com.manda2.demo.model.StudieProgram;
+import com.manda2.demo.model.Teacher;
+import com.manda2.demo.repository.CourseRepo;
+import com.manda2.demo.repository.PersonRepo;
+import com.manda2.demo.repository.StudentRepo;
+import com.manda2.demo.repository.StudieProgramRepo;
+import com.manda2.demo.repository.TeacherRepo;
 import com.manda2.demo.session.Auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +16,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
+@RequestMapping("course")
 public class HomeController {
 
   @Autowired
@@ -34,13 +43,13 @@ public class HomeController {
 
 
   @GetMapping("")
-  public String index(){
+  public String index() {
     return "index";
   }
 
   @GetMapping("/createCourse")
   public String home(HttpSession httpSession, Model model) {
-    if(!auth.isLoggedIn(httpSession)) return "login";
+   // if (!auth.isLoggedIn(httpSession)) return "login";
 
     System.out.println("session id: " + httpSession.getId());
 
@@ -48,7 +57,7 @@ public class HomeController {
     model.addAttribute("teachers", teacherRepo.findAll());
     model.addAttribute("studiePrograms", studieProgramRepo.findAll());
 
-//
+
 //    Teacher teacher = new Teacher("teacher1", "mmail@teacher1", "1234", 1);
 //    Teacher teacher2 = new Teacher("teacher2", "mmail@teacher2", "1234", 1);
 //
@@ -70,7 +79,7 @@ public class HomeController {
 //      "physics",
 //      3,
 //      "classCode123",
-//      (List<StudieProgram>) studieProgramRepo.findAll(),
+//      studieProgramRepo.findByid((long) 1),
 //      true,
 //      120,
 //      "Dansk",
@@ -90,20 +99,23 @@ public class HomeController {
 //    courseRepo.save(course2);
 //
 //
-//    studentRepo.save(new Student("Ole", "mail@student1","1234",2, (ArrayList<Course>) courseRepo.findAll()));
+//    studentRepo.save(new Student("Ole", "mail@student1", "1234", 2, (ArrayList<Course>) courseRepo.findAll()));
 
 
     personRepo.findAll().forEach(System.out::println);
     System.out.println();
     courseRepo.findAll().forEach(System.out::println);
-    return "courses/createCourse";
+    return "course/createCourse";
+  }
+
+  @GetMapping("courses")
+  public String courses() {
+    return "course/index";
   }
 
 
-
-
   @PostMapping("createCourse")
-  public String createCourse(Course course){
+  public String createCourse(Course course) {
 
     System.out.println("Course: ");
     System.out.println(course);

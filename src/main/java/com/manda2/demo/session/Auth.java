@@ -1,7 +1,7 @@
 package com.manda2.demo.session;
 
 import com.manda2.demo.model.Person;
-import com.manda2.demo.model.PersonRepo;
+import com.manda2.demo.repository.PersonRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;

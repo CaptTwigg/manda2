@@ -1,7 +1,5 @@
 package com.manda2.demo.model;
 
-import org.springframework.jmx.export.annotation.ManagedMetric;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -11,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Course implements Serializable {
@@ -21,8 +20,8 @@ public class Course implements Serializable {
   private String nameENG;
   private int semester;
   private String classCode;
-  @ManyToMany
-  private List<StudieProgram> studiePrograms;
+  @OneToOne
+  private StudieProgram studiePrograms;
   private boolean mandatoryOrElective;
   private int ECTS;
   private String courseLanguage;
@@ -42,7 +41,7 @@ public class Course implements Serializable {
   public Course() {
   }
 
-  public Course(String nameDK, String nameENG, int semester, String classCode, List<StudieProgram> studiePrograms, boolean mandatoryOrElective, int ECTS, String courseLanguage, int minNumOfStudent, int expNumOfStudent, int maxNumOfStudent, String prerequisites, String learningOutcome, String content, String learningActivitys, String examForm, List<Teacher> teachers) {
+  public Course(String nameDK, String nameENG, int semester, String classCode, StudieProgram studiePrograms, boolean mandatoryOrElective, int ECTS, String courseLanguage, int minNumOfStudent, int expNumOfStudent, int maxNumOfStudent, String prerequisites, String learningOutcome, String content, String learningActivitys, String examForm, List<Teacher> teachers) {
     this.nameDK = nameDK;
     this.nameENG = nameENG;
     this.semester = semester;
@@ -86,11 +85,11 @@ public class Course implements Serializable {
     this.nameENG = nameENG;
   }
 
-  public List<StudieProgram> getStudiePrograms() {
+  public StudieProgram getStudiePrograms() {
     return studiePrograms;
   }
 
-  public void setStudiePrograms(List<StudieProgram> studiePrograms) {
+  public void setStudiePrograms(StudieProgram studiePrograms) {
     this.studiePrograms = studiePrograms;
   }
 

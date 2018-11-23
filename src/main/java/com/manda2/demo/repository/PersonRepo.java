@@ -1,4 +1,6 @@
-package com.manda2.demo.model;
+package com.manda2.demo.repository;
+
+import com.manda2.demo.model.Person;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

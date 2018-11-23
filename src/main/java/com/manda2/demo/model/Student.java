@@ -25,7 +25,7 @@ public class Student extends Person {
 
   @Override
   public String toString() {
-    return String.format("courses: %s id: %s name: %s"
+    return String.format("course: %s id: %s name: %s"
       , this.courses, getId(), getName());
   }
 }
