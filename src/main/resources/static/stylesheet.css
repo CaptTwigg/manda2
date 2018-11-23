@@ -1,6 +1,6 @@
 /*
 Create new couse style
-*/
+
 .createForm{
     margin: auto;
 }
@@ -9,14 +9,31 @@ Create new couse style
     padding: 10px;
 }
 
-.createForm input, select{
+.createForm select{
     float: right;
 }
 
-.teacherSelect{
+.teacherSelect {
+    height: 108px;
+}
+*/
+.teacherSelect select {
     height: 108px;
 }
 
 .createCoursebtn{
     float: right;
 }
+
+.input-group-text{
+    min-width: 250px;
+}
+
+label, span, input, textarea{
+font-family: 'Noto Sans TC', sans-serif;
+}
+
+.dropdownwidth247{
+    width: 247px;
+}
+
