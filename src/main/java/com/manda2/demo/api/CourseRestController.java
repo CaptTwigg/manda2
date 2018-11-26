@@ -52,7 +52,8 @@ public class CourseRestController {
   @PostMapping("createCourse")
   public ResponseEntity createCourse(Course course) {
     if (course == null) return new ResponseEntity<>("No info given", HttpStatus.NO_CONTENT);
-    String okRespond = String.format("Course: %s created", course);    courseRepo.save(course);
+    String okRespond = String.format("Course: %s created", course);
+    courseRepo.save(course);
     return new ResponseEntity<>(okRespond, HttpStatus.OK);
   }
 
@@ -60,7 +61,6 @@ public class CourseRestController {
   public ResponseEntity updateCourse(Course course) {
     if (course == null) return new ResponseEntity<>("No info given", HttpStatus.NO_CONTENT);
     String okRespond = String.format("Course: %s updated", course);
-
     courseRepo.save(course);
 
     return new ResponseEntity<>(okRespond, HttpStatus.OK);

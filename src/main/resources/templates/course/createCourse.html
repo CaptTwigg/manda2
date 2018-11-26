@@ -6,12 +6,19 @@
 
     <link type="text/css" rel="stylesheet" href="../stylesheet.css"/>
 
-
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous"/>
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap2.min.css"></script>-->
+    <script src="../selectize.js"></script>
 </head>
 <body>
 <div th:replace="/include/menu::menu"></div>
@@ -29,7 +36,8 @@
                             <span class="input-group-text">Kursusnavn Dansk</span>
                         </div>
                         <input th:field="${course.nameDK}" type="text" class="form-control"
-                               aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                               aria-label="Sizing example input"
+                               aria-describedby="inputGroup-sizing-default">
                     </div>
 
 
@@ -38,7 +46,8 @@
                             <span class="input-group-text" id="inputGroup-sizing-default">Kursusnavn Engelsk</span>
                         </div>
                         <input th:field="${course.nameENG}" type="text" class="form-control"
-                               aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                               aria-label="Sizing example input"
+                               aria-describedby="inputGroup-sizing-default">
                     </div>
 
                     <div class="input-group mb-3">
@@ -46,7 +55,8 @@
                             <span class="input-group-text">Semester</span>
                         </div>
                         <input th:field="${course.semester}" type="text" class="form-control"
-                               aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                               aria-label="Sizing example input"
+                               aria-describedby="inputGroup-sizing-default">
                     </div>
 
                     <div class="input-group mb-3">
@@ -54,7 +64,8 @@
                             <span class="input-group-text">Klassekode</span>
                         </div>
                         <input th:field="${course.classCode}" type="text" class="form-control"
-                               aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                               aria-label="Sizing example input"
+                               aria-describedby="inputGroup-sizing-default">
                     </div>
 
                     <div class="input-group mb-3">
@@ -85,7 +96,8 @@
                             <span class="input-group-text">ECTS</span>
                         </div>
                         <input th:field="${course.ECTS}" type="text" class="form-control"
-                               aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                               aria-label="Sizing example input"
+                               aria-describedby="inputGroup-sizing-default">
                     </div>
 
                     <div class="input-group mb-3">
@@ -93,7 +105,8 @@
                             <span class="input-group-text">Sprog</span>
                         </div>
                         <input th:field="${course.courseLanguage}" type="text" class="form-control"
-                               aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                               aria-label="Sizing example input"
+                               aria-describedby="inputGroup-sizing-default">
                     </div>
 
                     <div class="input-group mb-3">
@@ -101,7 +114,8 @@
                             <span class="input-group-text">Mindst antal studerende</span>
                         </div>
                         <input th:field="${course.minNumOfStudent}" type="text" class="form-control"
-                               aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                               aria-label="Sizing example input"
+                               aria-describedby="inputGroup-sizing-default">
                     </div>
 
                     <div class="input-group mb-3">
@@ -109,7 +123,8 @@
                             <span class="input-group-text">Forventet antal studerende</span>
                         </div>
                         <input th:field="${course.expNumOfStudent}" type="text" class="form-control"
-                               aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                               aria-label="Sizing example input"
+                               aria-describedby="inputGroup-sizing-default">
                     </div>
 
                     <div class="input-group mb-3">
@@ -117,7 +132,8 @@
                             <span class="input-group-text">Højeste antal studerende</span>
                         </div>
                         <input th:field="${course.maxNumOfStudent}" type="text" class="form-control"
-                               aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                               aria-label="Sizing example input"
+                               aria-describedby="inputGroup-sizing-default">
                     </div>
 
                 </div>
@@ -129,7 +145,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Forudsætninger</span>
                         </div>
-                        <textarea th:field="${course.prerequisites}" type="text" class="form-control"
+                        <textarea th:field="${course.prerequisites}" type="text"
+                                  class="form-control"
                                   aria-label="Sizing example input"
                                   aria-describedby="inputGroup-sizing-default"></textarea>
                     </div>
@@ -139,7 +156,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Læringsudbytte</span>
                         </div>
-                        <textarea th:field="${course.learningOutcome}" type="text" class="form-control"
+                        <textarea th:field="${course.learningOutcome}" type="text"
+                                  class="form-control"
                                   aria-label="With textarea"></textarea>
                     </div>
 
@@ -157,7 +175,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Læringsaktiviteter</span>
                         </div>
-                        <textarea th:field="${course.learningActivitys}" type="text" class="form-control"
+                        <textarea th:field="${course.learningActivitys}" type="text"
+                                  class="form-control"
                                   aria-label="Sizing example input"
                                   aria-describedby="inputGroup-sizing-default"></textarea>
                     </div>
@@ -171,18 +190,24 @@
                                   aria-describedby="inputGroup-sizing-default"></textarea>
                     </div>
 
-                    <div class="input-group mb-3 teacherSelect">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Vælg Underviser(e)</span>
-                        </div>
-                        <select th:field="${course.teachers}" multiple="multiple" class="dropdownwidth247">
-                            <option
-                                    th:each="teacher : ${teachers}"
-                                    th:value="${teacher.id}"
-                                    th:text="${teacher.name}"
-                            ></option>
-                        </select>
-                    </div>
+                    <!--<div class="input-group mb-3 teacherSelect">-->
+                        <!--<div class="input-group-prepend">-->
+                            <!--<span class="input-group-text">Vælg Underviser(e)</span>-->
+                        <!--</div>-->
+                        <!--<select th:field="${course.teachers}" multiple="multiple"-->
+                                <!--class="dropdownwidth247">-->
+                            <!--<option-->
+                                    <!--th:each="teacher : ${teachers}"-->
+                                    <!--th:value="${teacher.id}"-->
+                                    <!--th:text="${teacher.name}"-->
+                            <!--&gt;</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+
+
+                    <select class="form-control pickerSelectClass selectize-dropdown " th:field="${course.teachers}" >
+
+                    </select>
 
 
                 </div>
@@ -191,7 +216,7 @@
             <div>
                 <button type="button" class="btn btn-danger backbtn">Tilbage</button>
                 <button id="createCourseBtnID" type="button"
-                        class="btn btn-success createCoursebtn">Opret Kursus
+                        class="btn btn-success float-right">Opret Kursus
                 </button>
             </div>
         </form>
@@ -199,25 +224,45 @@
     <div class="col-md-1"></div>
 </div>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 
 <script>
+  $.ajax({
+    url: '/api/teacherByName',
+    type: 'GET',
 
-    $("#createCourseBtnID").click(function () {
-        $.ajax({
-            method: "post",
-            url: "/api/createCourse",
-            data: $("#createFormID").serialize(),
-            success: function (resp) {
-                console.log(resp);
-                window.location.href = "/";
+    error: function(err) { console.log(err); },
 
-            }
-        });
+    success: function(options) {
+      console.log(options);
+      $('#teachers').selectize({
+        persist: true,
+        searchField: ['name', 'id'],
+        valueField: 'id',
+        labelField: 'name',
+        maxItems: null,
+        preload: true,
+        options: options,
+        create: false,
+        plugins: ['remove_button'],
+      });
+    }
+  });
+</script>
+
+<script>
+  $("#createCourseBtnID").click(function () {
+    $.ajax({
+      method: "post",
+      url: "/api/createCourse",
+      data: $("#createFormID").serialize(),
+      success: function (resp) {
+        console.log(resp);
+        window.location.href = "/";
+
+      }
     });
+  });
 </script>
 </body>
 </html>

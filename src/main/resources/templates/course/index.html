@@ -45,9 +45,12 @@
         $('#courseTable > thead tr').append('<th>' + Object.keys(list[0])[i] + '</th>');
       }
       for (var i = 0; i < list.length; i++) {
+
+
         var course = list[i];
         var x;
         var tr = "<tr>";
+        tr += '<td><a href="/course/updateCourse/' +list[i].id+ '"  class="btn btn-primary">Edit</a></td>';
         for (x in course) {
           tr += '<td>' + course[x] + '</td>'
         }
@@ -71,5 +74,7 @@
       }
     }
   });
+
+
 </script>
 </html>

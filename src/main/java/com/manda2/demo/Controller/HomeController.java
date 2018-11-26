@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -113,6 +114,15 @@ public class HomeController {
     return "course/index";
   }
 
+  @GetMapping("updateCourse/{id}")
+  public String update(Model model, @PathVariable Long id){
+    Course course = courseRepo.findByid(id);
+    System.out.println(course);
+    model.addAttribute("course", course);
+    model.addAttribute("teachers", teacherRepo.findAll());
+    model.addAttribute("studiePrograms", studieProgramRepo.findAll());
+    return "course/update";
+  }
 
   @PostMapping("createCourse")
   public String createCourse(Course course) {
