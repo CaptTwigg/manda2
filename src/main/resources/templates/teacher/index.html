@@ -48,7 +48,7 @@
     success: function (list) {
       $('#table > thead tr').append('<th>' + Object.keys(list[0])[0] + '</th>');
       $('#table > thead tr').append('<th>' + Object.keys(list[0])[2] + '</th>');
-      $('#table > thead tr').append('<th></th>');
+      $('#table > thead tr').append('<th><a href="/teacher/create" class="btn btn-success float-right">Add new course</a></th>');
 
 
       for (var i = 0; i < list.length; i++) {
@@ -56,7 +56,7 @@
         tr += '<td>' + list[i].name + '</td>'
         tr += '<td>' + list[i].email + '</td>'
 
-        tr += '<td><a href="/teacher/updateTeacher/' + list[i].id + '" class="btn btn-primary float-right">Edit</a></td>';
+        tr += '<td><a href="/teacher/update/' + list[i].id + '" class="btn btn-primary float-right">Edit</a></td>';
         tr += "</tr>";
         $("#table tr:last").after(tr);
       }

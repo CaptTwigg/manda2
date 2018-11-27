@@ -1,6 +1,7 @@
 package com.manda2.demo.api;
 
 import com.manda2.demo.model.Course;
+import com.manda2.demo.model.Teacher;
 import com.manda2.demo.repository.CourseRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("api/course")
 public class CourseRestController {
 
   @Autowired
@@ -72,5 +74,13 @@ public class CourseRestController {
     String okRespond = String.format("Course: %s deleted", course);
     courseRepo.delete(course);
     return new ResponseEntity<>(okRespond, HttpStatus.OK);
+  }
+
+  @GetMapping("courseTeachers")
+  public ResponseEntity teachers(@RequestParam Long id){
+    Course course = courseRepo.findByid(id);
+    List<Teacher> teachers = course.getTeachers();
+
+    return new ResponseEntity<>(teachers, HttpStatus.OK);
   }
 }

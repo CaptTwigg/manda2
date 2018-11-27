@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("api/teacher")
 public class TeacherRestController {
 
 
@@ -56,8 +57,14 @@ public class TeacherRestController {
       hashMaps.add( hashMap);
     }
 
-
     return new ResponseEntity<>(hashMaps, HttpStatus.OK);
+  }
 
+  @PostMapping("create")
+  public ResponseEntity create(Teacher teacher){
+    if (teacher == null) return new ResponseEntity<>("No info given", HttpStatus.NO_CONTENT);
+    String okRespond = String.format("Teacher: %s created", teacher);
+    teacherRepo.save(teacher);
+    return new ResponseEntity<>(okRespond, HttpStatus.OK);
   }
 }

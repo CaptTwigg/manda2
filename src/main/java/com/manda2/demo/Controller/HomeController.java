@@ -51,9 +51,6 @@ public class HomeController {
   @GetMapping("/createCourse")
   public String home(HttpSession httpSession, Model model) {
    // if (!auth.isLoggedIn(httpSession)) return "login";
-
-    System.out.println("session id: " + httpSession.getId());
-
     model.addAttribute("course", new Course());
     model.addAttribute("teachers", teacherRepo.findAll());
     model.addAttribute("studiePrograms", studieProgramRepo.findAll());
@@ -101,11 +98,6 @@ public class HomeController {
 //
 //
 //    studentRepo.save(new Student("Ole", "mail@student1", "1234", 2, (ArrayList<Course>) courseRepo.findAll()));
-
-
-    personRepo.findAll().forEach(System.out::println);
-    System.out.println();
-    courseRepo.findAll().forEach(System.out::println);
     return "course/createCourse";
   }
 
@@ -117,19 +109,9 @@ public class HomeController {
   @GetMapping("updateCourse/{id}")
   public String update(Model model, @PathVariable Long id){
     Course course = courseRepo.findByid(id);
-    System.out.println(course);
     model.addAttribute("course", course);
     model.addAttribute("teachers", teacherRepo.findAll());
     model.addAttribute("studiePrograms", studieProgramRepo.findAll());
     return "course/update";
-  }
-
-  @PostMapping("createCourse")
-  public String createCourse(Course course) {
-
-    System.out.println("Course: ");
-    System.out.println(course);
-
-    return "createCourse";
   }
 }
