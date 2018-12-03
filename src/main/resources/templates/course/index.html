@@ -9,13 +9,19 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous"/>
 </head>
-<body>
+<body style="background-color: lightgray">
 <div th:replace="/include/menu::menu"></div>
 
 
 <table id="courseTable" class="table table-striped">
     <thead>
     <tr>
+        <th>Course Name (Dansk)</th>
+        <th>Course Name (English)</th>
+        <th>Semester</th>
+        <th>Mandatory or Elective</th>
+        <th>Edit</th>
+
     </tr>
     </thead>
     <tbody>
@@ -37,41 +43,45 @@
     url: "/api/course/courses",
     success: function (list) {
 
-      console.log(list[0].studiePrograms);
-      console.log(Object.keys(list[0]));
-      var metadataLength = Object.keys(list[0]).length
-      for (var i = 0; i < metadataLength; i++) {
+      // console.log(list[0].studiePrograms);
+      // console.log(Object.keys(list[0]));
+      // var metadataLength = Object.keys(list[0]).length
+      // for (var i = 0; i < metadataLength; i++) {
+      //
+      //   $('#courseTable > thead tr').append('<th>' + Object.keys(list[0])[i] + '</th>');
+      // }
+      // for (var i = 0; i < list.length; i++) {
+      //
+      //
+      //   var course = list[i];
+      //   var x;
+      //   var tr = "<tr>";
+      //   tr += '<td><a href="/course/updateCourse/' +list[i].id+ '"  class="btn btn-primary">Edit</a></td>';
+      //   for (x in course) {
+      //     tr += '<td>' + course[x] + '</td>'
+      //   }
+      //   tr += "</tr>";
+      //   $("#courseTable tr:last").after(tr);
 
-        $('#courseTable > thead tr').append('<th>' + Object.keys(list[0])[i] + '</th>');
-      }
-      for (var i = 0; i < list.length; i++) {
 
 
-        var course = list[i];
-        var x;
-        var tr = "<tr>";
-        tr += '<td><a href="/course/updateCourse/' +list[i].id+ '"  class="btn btn-primary">Edit</a></td>';
-        for (x in course) {
-          tr += '<td>' + course[x] + '</td>'
+        for (var i = 0; i < list.length; i++) {
+            var booleanMandatory = "Elective";
+            if (list[i].mandatoryOrElective) {
+                booleanMandatory = "Mandatory";
+            }
+
+            $("#courseTable").append('<a href="/course/updateCourse/'+list[i].id+ '"><tr>' +
+                '<td>' + list[i].nameDK + '</td>' +
+                '<td>' + list[i].nameENG + '</td>' +
+                '<td>' + list[i].semester + '</td>' +
+                '<td>' + booleanMandatory + '</td>' +
+                '<td>' +
+                '      <a href="/course/updateCourse/' + list[i].id + '"  class="btn btn-primary">Edit</a>' +
+                ' </td>' +
+                '</tr> </a>'
+            );
         }
-        tr += "</tr>";
-        $("#courseTable tr:last").after(tr);
-
-
-        // $("#car-table tr:last").after('<tr>' +
-        //   '<td>' + list[i].brand + '</td>' +
-        //   '<td>' + list[i].color + '</td>' +
-        //   '<td>' + list[i].doors + '</td>' +
-        //   '<td>' + list[i].speed + '</td>' +
-        //   '<td> <div class="float-right">' +
-        //   '      <a href="/car/update/' +list[i].id + '"  class="btn btn-primary">Edit</a>' +
-        //   '         <button onclick="deleteCar(' + list[i].id + ')" class="btn btn-danger ">' +
-        //   '             Delete' +
-        //   '         </button>' +
-        //   ' </div> </td>' +
-        //   '</tr>'
-        // );
-      }
     }
   });
 
