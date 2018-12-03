@@ -1,7 +1,9 @@
 package com.manda2.demo.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -36,6 +39,8 @@ public class Course implements Serializable {
   @ManyToMany
   @JoinColumn(name = "id")
   private List<Teacher> teachers;
+  @OneToMany(mappedBy = "course")
+  Set<StudentCourses> studentCoursesSet = new HashSet<>();
 
 
   public Course() {
@@ -205,9 +210,11 @@ public class Course implements Serializable {
     this.classCode = classCode;
   }
 
-  @Override
-  public String toString() {
-    return String.format("id: %s nameDK: %s nameENG: %s semester: %s classCode: %s studiePrograms: %s mandatoryOrElective: %s ECTS: %s courseLanguage: %s minNumOfStudent: %s expNumOfStudent: %s maxNumOfStudent: %s prerequisites: %s learningOutcome: %s content: %s learningActivitys: %s examForm: %s teachers: %s "
-      , this.id, this.nameDK, this.nameENG, this.semester, this.classCode, this.studiePrograms, this.mandatoryOrElective, this.ECTS, this.courseLanguage, this.minNumOfStudent, this.expNumOfStudent, this.maxNumOfStudent, this.prerequisites, this.learningOutcome, this.content, this.learningActivitys, this.examForm, this.teachers);
-  }
+//  @Override
+//  public String toString() {
+//    return String.format("id: %s nameDK: %s nameENG: %s semester: %s classCode: %s studiePrograms: %s mandatoryOrElective: %s ECTS: %s courseLanguage: %s minNumOfStudent: %s expNumOfStudent: %s maxNumOfStudent: %s prerequisites: %s learningOutcome: %s content: %s learningActivitys: %s examForm: %s teachers: %s "
+//      , this.id, this.nameDK, this.nameENG, this.semester, this.classCode, this.studiePrograms, this.mandatoryOrElective, this.ECTS, this.courseLanguage, this.minNumOfStudent, this.expNumOfStudent, this.maxNumOfStudent, this.prerequisites, this.learningOutcome, this.content, this.learningActivitys, this.examForm, this.teachers);
+//  }
+
+
 }

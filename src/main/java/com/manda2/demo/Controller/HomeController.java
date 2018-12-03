@@ -2,10 +2,12 @@ package com.manda2.demo.Controller;
 
 import com.manda2.demo.model.Course;
 import com.manda2.demo.model.Student;
+import com.manda2.demo.model.StudentCourses;
 import com.manda2.demo.model.StudieProgram;
 import com.manda2.demo.model.Teacher;
 import com.manda2.demo.repository.CourseRepo;
 import com.manda2.demo.repository.PersonRepo;
+import com.manda2.demo.repository.StudentCoursesRepo;
 import com.manda2.demo.repository.StudentRepo;
 import com.manda2.demo.repository.StudieProgramRepo;
 import com.manda2.demo.repository.TeacherRepo;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -42,9 +45,25 @@ public class HomeController {
   @Autowired
   private PersonRepo personRepo;
 
+  @Autowired
+  private StudentCoursesRepo studentCoursesRepo;
+
 
   @GetMapping("")
   public String index() {
+    Student student = studentRepo.findByid((long) 9);
+    Course course = courseRepo.findByid((long) 8);
+    System.out.println(student);
+    System.out.println(course);
+    //studentCoursesRepo.save(new StudentCourses(student,course));
+    //ArrayList<StudentCourses> studentCourses = (ArrayList<StudentCourses>) studentCoursesRepo.findAll();
+    Set<StudentCourses> studentCourses = studentCoursesRepo.findByid((long) 20);
+    System.out.println(studentCourses);
+
+    student.setStudentCoursesSet(studentCourses);
+    studentRepo.save(student);
+    System.out.println(student.getStudentCoursesSet());
+    System.out.println(studentRepo.findAll());
     return "index";
   }
 

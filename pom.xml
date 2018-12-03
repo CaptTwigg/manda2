@@ -22,7 +22,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>10</java.version>
+        <java.version>8</java.version>
     </properties>
 
     <dependencies>
@@ -68,6 +68,7 @@
     </dependencies>
 
     <build>
+        <finalName>manda2</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -75,6 +76,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>
