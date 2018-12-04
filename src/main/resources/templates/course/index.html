@@ -43,6 +43,23 @@
     url: "/api/course/courses",
     success: function (list) {
 
+        for (var i = 0; i < list.length; i++) {
+            var booleanMandatory = "Elective";
+            if (list[i].mandatoryOrElective) {
+                booleanMandatory = "Mandatory";
+            }
+
+            $("#courseTable").append('<a href="/course/updateCourse/'+list[i].id+ '"><tr>' +
+                '<td>' + list[i].nameDK + '</td>' +
+                '<td>' + list[i].nameENG + '</td>' +
+                '<td>' + list[i].semester + '</td>' +
+                '<td>' + booleanMandatory + '</td>' +
+                '<td>' +
+                '      <a href="/course/updateCourse/' + list[i].id + '"  class="btn btn-primary">Edit</a>' +
+                ' </td>' +
+                '</tr> </a>'
+            );
+        }
       // console.log(list[0].studiePrograms);
       // console.log(Object.keys(list[0]));
       // var metadataLength = Object.keys(list[0]).length
@@ -62,26 +79,6 @@
       //   }
       //   tr += "</tr>";
       //   $("#courseTable tr:last").after(tr);
-
-
-
-        for (var i = 0; i < list.length; i++) {
-            var booleanMandatory = "Elective";
-            if (list[i].mandatoryOrElective) {
-                booleanMandatory = "Mandatory";
-            }
-
-            $("#courseTable").append('<a href="/course/updateCourse/'+list[i].id+ '"><tr>' +
-                '<td>' + list[i].nameDK + '</td>' +
-                '<td>' + list[i].nameENG + '</td>' +
-                '<td>' + list[i].semester + '</td>' +
-                '<td>' + booleanMandatory + '</td>' +
-                '<td>' +
-                '      <a href="/course/updateCourse/' + list[i].id + '"  class="btn btn-primary">Edit</a>' +
-                ' </td>' +
-                '</tr> </a>'
-            );
-        }
     }
   });
 
