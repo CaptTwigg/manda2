@@ -64,6 +64,8 @@ public class TeacherRestController {
   public ResponseEntity create(Teacher teacher){
     if (teacher == null) return new ResponseEntity<>("No info given", HttpStatus.NO_CONTENT);
     String okRespond = String.format("Teacher: %s created", teacher);
+    System.out.println(teacher);
+    teacher.setNiveau(1);
     teacherRepo.save(teacher);
     return new ResponseEntity<>(okRespond, HttpStatus.OK);
   }
