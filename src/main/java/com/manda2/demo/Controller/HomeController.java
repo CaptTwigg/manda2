@@ -51,7 +51,7 @@ public class HomeController {
 
   @GetMapping("")
   public String index() {
-    Student student = studentRepo.findByid((long) 9);
+/*    Student student = studentRepo.findByid((long) 9);
     Course course = courseRepo.findByid((long) 8);
     System.out.println(student);
     System.out.println(course);
@@ -63,8 +63,8 @@ public class HomeController {
     student.setStudentCoursesSet(studentCourses);
     studentRepo.save(student);
     System.out.println(student.getStudentCoursesSet());
-    System.out.println(studentRepo.findAll());
-    return "index";
+    System.out.println(studentRepo.findAll());*/
+    return "course/index";
   }
 
   @GetMapping("/createCourse")

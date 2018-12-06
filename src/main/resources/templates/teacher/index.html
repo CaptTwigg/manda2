@@ -30,8 +30,7 @@
             <tr>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Edit</th>
-                <th> <a href="/teacher/create"  class="btn btn-success">Create</a> </th>
+                <th> <a href="/teacher/create"  class="btn btn-success float-right">Create</a> </th>
             </tr>
             </thead>
             <tbody>
@@ -48,11 +47,9 @@
 <script>
   $.ajax({
     method: "get",
-    url: "/api/teacherByName",
+    url: "/api/teacher/teacherByName",
     success: function (list) {
-      $('#table > thead tr').append('<th>' + Object.keys(list[0])[0] + '</th>');
-      $('#table > thead tr').append('<th>' + Object.keys(list[0])[2] + '</th>');
-      $('#table > thead tr').append('<th><a href="/teacher/create" class="btn btn-success float-right">Add new course</a></th>');
+
 
 
       for (var i = 0; i < list.length; i++) {
