@@ -24,3 +24,6 @@ As of right now, there is only 1 student hard coded. So if you try to sign up fo
 
 Lastly there has been build some of the CRUD for the teacher page. You can only Create and Read the overview of the teacher. Some login
 functionality has been partly done, but none has been finalized.
+
+
+![alt text](https://static8.depositphotos.com/1020341/896/i/950/depositphotos_8969502-stock-photo-human-face-with-cracked-texture.jpg)
