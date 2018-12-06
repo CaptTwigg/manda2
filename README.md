@@ -9,6 +9,8 @@ When you first start localhost on port 8080 you will be referred to an overview 
 courses. In addition we also have a nav bar on the top of the page where you have the ability to navigate throughout our pages on the
 application.
 
+[Picture of Course page](https://i.imgur.com/oabgHC9)
+
 On this page you can choose to edit a specific course by clicking on the edit button on the corresponding line to the specific course
 and then be referred to the edit course page.
 
@@ -26,4 +28,4 @@ Lastly there has been build some of the CRUD for the teacher page. You can only 
 functionality has been partly done, but none has been finalized.
 
 
-[Imgur](https://imgur.com/oabgHC9)
+
