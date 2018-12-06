@@ -5,7 +5,7 @@ Brief summary of our wep-application.
 
 For our application we have made a CRUD for courses in which we have added some Bootstrap to add some front-end to the application.
 
-![](https://imgur.com/V04uZvi)
+![smag](https://imgur.com/V04uZvi)
 
 When you first start localhost on port 8080 you will be referred to an overview of our courses, where you can see the already created
 courses. In addition we also have a nav bar on the top of the page where you have the ability to navigate throughout our pages on the
