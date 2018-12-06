@@ -5,8 +5,6 @@ Brief summary of our wep-application.
 
 For our application we have made a CRUD for courses in which we have added some Bootstrap to add some front-end to the application.
 
-![smag](https://imgur.com/V04uZvi)
-
 When you first start localhost on port 8080 you will be referred to an overview of our courses, where you can see the already created
 courses. In addition we also have a nav bar on the top of the page where you have the ability to navigate throughout our pages on the
 application.
@@ -19,6 +17,9 @@ Here you can choose to edit one or more lines after choice and when you are done
 On the same page you can also choose to press "Delete" the specific course if you wish to the delete the specific course.
 
 All of our data is stored on a Google Cloud Database.
+
+As a student you can assign yourself to a course. Do this by pressing the "Join" button on the specific course you wish to enter. The Admin 
+can then on the Admin page either "Decline" or "Accept" each of the students that has requested to join the course. 
 
 Lastly there has been build some of the CRUD for the teacher and some login functionality has been partly done, but none that has been
 finalized.
