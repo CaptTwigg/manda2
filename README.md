@@ -26,4 +26,4 @@ Lastly there has been build some of the CRUD for the teacher page. You can only 
 functionality has been partly done, but none has been finalized.
 
 
-![alt text](https://static8.depositphotos.com/1020341/896/i/950/depositphotos_8969502-stock-photo-human-face-with-cracked-texture.jpg)
+[Imgur](https://imgur.com/oabgHC9)
