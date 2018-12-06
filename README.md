@@ -19,7 +19,8 @@ On the same page you can also choose to press "Delete" the specific course if yo
 All of our data is stored on a Google Cloud Database.
 
 As a student you can assign yourself to a course. Do this by pressing the "Join" button on the specific course you wish to enter. The Admin 
-can then on the Admin page either "Decline" or "Accept" each of the students that has requested to join the course. 
+can then on the Admin page either "Decline" or "Accept" each of the students that has requested to join the course.
+As of right now, there is only 1 student hard coded. So if you try to sign up for a course you will show by the name "Ole".
 
 Lastly there has been build some of the CRUD for the teacher and some login functionality has been partly done, but none that has been
 finalized.
