@@ -32,6 +32,11 @@ public class StudentCourses {
   @CreationTimestamp
   private Date timestamp;
 
+  @Column(name = "accepted", columnDefinition = "tinyint(1) default 0")
+  private boolean accepted;
+  @Column(name = "pending", columnDefinition = "tinyint(1) default 1")
+  private boolean pending;
+
 
   public StudentCourses() {
   }
@@ -45,6 +50,30 @@ public class StudentCourses {
     this.student = student;
     this.course = course;
     this.timestamp = timestamp;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public boolean isAccepted() {
+    return accepted;
+  }
+
+  public void setAccepted(boolean accepted) {
+    this.accepted = accepted;
+  }
+
+  public boolean isPending() {
+    return pending;
+  }
+
+  public void setPending(boolean pending) {
+    this.pending = pending;
   }
 
   public Student getStudent() {
@@ -71,9 +100,11 @@ public class StudentCourses {
     this.timestamp = timestamp;
   }
 
+
+
   @Override
   public String toString() {
-    return String.format("studentID: %s courseID: %s timestamp: %s "
-      , this.student.getId(), this.course.getId(), this.timestamp);
+    return String.format("id: %s studentID: %s courseID: %s timestamp: %s accepted: %s pending: %s "
+      , this.id, this.student.getId(), this.course.getId(), this.timestamp, this.accepted, this.pending);
   }
 }

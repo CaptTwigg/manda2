@@ -49,24 +49,6 @@ public class HomeController {
   private StudentCoursesRepo studentCoursesRepo;
 
 
-  @GetMapping("")
-  public String index() {
-/*    Student student = studentRepo.findByid((long) 9);
-    Course course = courseRepo.findByid((long) 8);
-    System.out.println(student);
-    System.out.println(course);
-    //studentCoursesRepo.save(new StudentCourses(student,course));
-    //ArrayList<StudentCourses> studentCourses = (ArrayList<StudentCourses>) studentCoursesRepo.findAll();
-    Set<StudentCourses> studentCourses = studentCoursesRepo.findByid((long) 20);
-    System.out.println(studentCourses);
-
-    student.setStudentCoursesSet(studentCourses);
-    studentRepo.save(student);
-    System.out.println(student.getStudentCoursesSet());
-    System.out.println(studentRepo.findAll());*/
-    return "course/index";
-  }
-
   @GetMapping("/createCourse")
   public String home(HttpSession httpSession, Model model) {
    // if (!auth.isLoggedIn(httpSession)) return "login";
@@ -120,7 +102,7 @@ public class HomeController {
     return "course/createCourse";
   }
 
-  @GetMapping("courses")
+  @GetMapping({"courses", ""})
   public String courses() {
     return "course/index";
   }

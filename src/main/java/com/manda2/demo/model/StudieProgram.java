@@ -1,5 +1,8 @@
 package com.manda2.demo.model;
 
+import net.bytebuddy.implementation.bind.annotation.Default;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,10 +17,15 @@ public class StudieProgram {
   private String program;
 
 
+
   public StudieProgram() {
   }
 
   public StudieProgram( String program) {
+    this.program = program;
+  }
+
+  public StudieProgram(String program, boolean accepted, boolean pending) {
     this.program = program;
   }
 

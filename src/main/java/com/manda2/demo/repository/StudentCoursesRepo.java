@@ -9,5 +9,7 @@ import java.util.Set;
 
 @Repository
 public interface StudentCoursesRepo extends CrudRepository<StudentCourses, Long> {
-  Set<StudentCourses> findByid(Long id);
+  StudentCourses findByid(Long id);
+  Set<StudentCourses> findAllByPendingTrue();
+  Set<StudentCourses> findByPendingTrue();
 }

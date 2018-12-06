@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaft.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Student</title>
+    <title>Admin</title>
+
 
     <link type="text/css" rel="stylesheet" href="../stylesheet.css"/>
 
@@ -22,74 +23,97 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.js"></script>
 </head>
 <body>
-
 <div th:replace="/../include/menu::menu"></div>
+
 <div class="row mt-5">
     <div class="col-2"></div>
     <div class="col-8">
 
-        <table id="courseTable" class="table table-striped">
+        <table id="table" class="table table-striped">
             <thead>
             <tr>
-                <th>Course Name (Dansk)</th>
-                <th>Course Name (English)</th>
-                <th>Semester</th>
-                <th>Mandatory or Elective</th>
+                <th>Course code</th>
+                <th>Student name</th>
                 <th></th>
-
             </tr>
             </thead>
             <tbody>
-            <tr>
-            </tr>
+            <tr></tr>
             </tbody>
         </table>
     </div>
+    <div class="col-2"></div>
 </div>
-<div class="col-2"></div>
+
+</body>
 <script>
-  $.ajax({
-    method: "get",
-    url: "/api/course/courses",
-    success: function (list) {
-
-      for (var i = 0; i < list.length; i++) {
-        var booleanMandatory = "Elective";
-        if (list[i].mandatoryOrElective) {
-          booleanMandatory = "Mandatory";
-        }
-
-        $("#courseTable").append('<a href="/course/updateCourse/' + list[i].id + '"><tr>' +
-          '<td>' + list[i].nameDK + '</td>' +
-          '<td>' + list[i].nameENG + '</td>' +
-          '<td>' + list[i].classCode + '</td>' +
-          '<td>' + booleanMandatory + '</td>' +
-          '<td>' +
-          '      <a onclick="join(' + list[i].id + ')"  class="btn btn-primary">Join</a>' +
-          ' </td>' +
-          '</tr> </a>'
-        );
-      }
-    }
-  });
-</script>
-
-<script>
-  function join(id) {
+  function table() {
     $.ajax({
-      url: '/../api/student/add/studentCourse',
-      type: 'post',
+      url: '/../api/student/pending',
+      type: 'get',
+      error: function (err) {
+        console.log(err.responseText);
+      },
+      success: function (options) {
+        $("#table > tbody").empty();
+
+        for (let i = 0; i < options.length; i++) {
+
+          console.log(options[i].id);
+          $("#table").append(
+            '<tr>' +
+            '<td>' + options[i].course.classCode + '</td>' +
+            '<td>' + options[i].studentName + '</td>' +
+            '<td>' +
+            '<a onclick="accept(' + options[i].id + ')" class="btn btn-success float-right">Accept</a>' +
+            '<a onclick="decline(' + options[i].id + ')" class="btn btn-danger float-right mr-2">Decline</a>' +
+            '</td>' +
+            '</tr>');
+        }
+      }
+    });
+  }
+
+  table();
+</script>
+<script>
+
+
+  function decline(id) {
+    $.ajax({
+      url: '/../api/student/updatePending',
+      type: 'put',
       data: {
         courseID: id,
+        acc: false
       },
       error: function (err) {
         console.log(err.responseText);
       },
       success: function (options) {
         console.log(options);
+        table();
+      }
+    });
+  }
+
+  function accept(id) {
+    $.ajax({
+      url: '/../api/student/updatePending',
+      type: 'put',
+      data: {
+        courseID: id,
+        acc: true
+      },
+      error: function (err) {
+        console.log(err.responseText);
+      },
+      success: function (options) {
+        console.log(options);
+        table();
       }
     });
   }
 </script>
-</body>
+
 </html>
